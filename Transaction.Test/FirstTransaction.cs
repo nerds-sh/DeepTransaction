@@ -9,7 +9,7 @@ namespace Transaction.Test
   
     public class FirstTransaction : BaseTransaction
     {
-        public FirstTransaction() : base("My ExecutionTran")
+        public FirstTransaction() : base("My Transaction")
         {
             this.AddStep<Step3>().AddStep<Step4>();
         }
