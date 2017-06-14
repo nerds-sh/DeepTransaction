@@ -1,0 +1,15 @@
+E:\Projects\PipelineTransactions\Trsanction.Core\bin\Debug\Trsanction.Core.dll
+E:\Projects\PipelineTransactions\Trsanction.Core\bin\Debug\Trsanction.Core.pdb
+E:\Projects\PipelineTransactions\Trsanction.Core\obj\Debug\Trsanction.Core.csprojResolveAssemblyReference.cache
+E:\Projects\PipelineTransactions\Trsanction.Core\obj\Debug\Trsanction.Core.dll
+E:\Projects\PipelineTransactions\Trsanction.Core\obj\Debug\Trsanction.Core.pdb
+E:\Projects\PipelineTransactions\Transactions\Trsanction.Core\bin\Debug\Trsanction.Core.dll
+E:\Projects\PipelineTransactions\Transactions\Trsanction.Core\bin\Debug\Trsanction.Core.pdb
+E:\Projects\PipelineTransactions\Transactions\Trsanction.Core\obj\Debug\Trsanction.Core.csprojResolveAssemblyReference.cache
+E:\Projects\PipelineTransactions\Transactions\Trsanction.Core\obj\Debug\Trsanction.Core.dll
+E:\Projects\PipelineTransactions\Transactions\Trsanction.Core\obj\Debug\Trsanction.Core.pdb
+E:\Projects\DeepTransaction\Trsanction.Core\bin\Debug\Trsanction.Core.dll
+E:\Projects\DeepTransaction\Trsanction.Core\bin\Debug\Trsanction.Core.pdb
+E:\Projects\DeepTransaction\Trsanction.Core\obj\Debug\Trsanction.Core.csprojResolveAssemblyReference.cache
+E:\Projects\DeepTransaction\Trsanction.Core\obj\Debug\Trsanction.Core.dll
+E:\Projects\DeepTransaction\Trsanction.Core\obj\Debug\Trsanction.Core.pdb
