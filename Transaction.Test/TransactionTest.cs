@@ -1,5 +1,5 @@
-﻿using Trsanction.Core;
-using Trsanction.Core.DI;
+﻿using DeepTransaction;
+using DeepTransaction.DI;
 using Xunit;
 
 namespace Transaction.Test
@@ -36,6 +36,11 @@ namespace Transaction.Test
 
     public class Step1 : ITransactionStep
     {
+        public void Before(dynamic input)
+        {
+            
+        }
+
         public TransactionContext Execute(dynamic input)
         {
             input.Person = new Person()
@@ -48,6 +53,11 @@ namespace Transaction.Test
 
     public class Step2 : ITransactionStep
     {
+        public void Before(dynamic input)
+        {
+            
+        }
+
         public TransactionContext Execute(dynamic input)
         {
             input.Person.LastName = input.Name;

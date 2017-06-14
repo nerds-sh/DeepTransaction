@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Transactions;
-using Trsanction.Core.DI;
+using DeepTransaction.DI;
 
-namespace Trsanction.Core
+namespace DeepTransaction
 {
     public class TransactionWorker
     {
@@ -44,7 +44,9 @@ namespace Trsanction.Core
             dynamic previousOutput = null;
             while (_steps.Count > 0)
             {
-                previousOutput = _steps.Dequeue().Execute(input);
+                var step = _steps.Dequeue();
+                step.Before(input);
+                previousOutput = step.Execute(input);
             }
 
             if (_transactionDeepneess.Count <= 1)

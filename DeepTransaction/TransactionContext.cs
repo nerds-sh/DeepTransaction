@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Dynamic;
 
-namespace Trsanction.Core
+namespace DeepTransaction
 {
     public class TransactionContext : DynamicObject
     {

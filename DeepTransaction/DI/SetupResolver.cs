@@ -1,4 +1,4 @@
-﻿namespace Trsanction.Core.DI
+﻿namespace DeepTransaction.DI
 {
     public static class SetupResolver
     {

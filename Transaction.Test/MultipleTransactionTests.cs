@@ -1,5 +1,5 @@
-﻿using Trsanction.Core;
-using Trsanction.Core.DI;
+﻿using DeepTransaction;
+using DeepTransaction.DI;
 using Xunit;
 
 namespace Transaction.Test

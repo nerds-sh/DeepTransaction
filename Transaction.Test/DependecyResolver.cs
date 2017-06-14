@@ -1,4 +1,4 @@
-﻿using Trsanction.Core.DI;
+﻿using DeepTransaction.DI;
 
 namespace Transaction.Test
 {

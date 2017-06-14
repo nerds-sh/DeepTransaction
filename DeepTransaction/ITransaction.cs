@@ -1,4 +1,4 @@
-﻿namespace Trsanction.Core
+﻿namespace DeepTransaction
 {
     public interface ITransaction : ITransactionStep
     {

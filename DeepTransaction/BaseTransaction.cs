@@ -1,4 +1,4 @@
-﻿namespace Trsanction.Core
+﻿namespace DeepTransaction
 {
     public abstract class BaseTransaction : ITransactionStep
     {
@@ -19,6 +19,11 @@
             this.Tran.AddStep<TStep>();
 
             return this;
+        }
+
+        public void Before(dynamic input)
+        {
+            // do nothing
         }
 
         public virtual TransactionContext Execute(dynamic input)

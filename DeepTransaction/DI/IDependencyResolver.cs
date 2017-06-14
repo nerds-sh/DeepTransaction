@@ -1,4 +1,4 @@
-﻿namespace Trsanction.Core.DI
+﻿namespace DeepTransaction.DI
 {
     public interface IDependencyResolver
     {

@@ -1,4 +1,8 @@
-﻿using Trsanction.Core;
+﻿
+
+
+
+using DeepTransaction;
 
 namespace Transaction.Test
 {
@@ -13,6 +17,11 @@ namespace Transaction.Test
 
     public class Step3 : ITransactionStep
     {
+        public void Before(dynamic input)
+        {
+            
+        }
+
         public TransactionContext Execute(dynamic input)
         {
             if (input.Step3 == "Pasul 3")
@@ -26,6 +35,11 @@ namespace Transaction.Test
 
     public class Step4 : ITransactionStep
     {
+        public void Before(dynamic input)
+        {
+            
+        }
+
         public TransactionContext Execute(dynamic input)
         {
             if (input.Step4 == "Pasul 4")
@@ -39,6 +53,11 @@ namespace Transaction.Test
 
     public class Step5 : ITransactionStep
     {
+        public void Before(dynamic input)
+        {
+            
+        }
+
         public TransactionContext Execute(dynamic input)
         {
             if (input.Step5 == "Pasul 5")
