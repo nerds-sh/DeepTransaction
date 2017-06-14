@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trsanction.Core", "Trsanction.Core\Trsanction.Core.csproj", "{DC46A61C-013C-449B-BAC4-541076527456}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Test", "Transaction.Test\Transaction.Test.csproj", "{4A5946C9-CB75-4E2F-ADD8-4BABF6AB1CAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepTransaction", "DeepTransaction\DeepTransaction.csproj", "{DC46A61C-013C-449B-BAC4-541076527456}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DC46A61C-013C-449B-BAC4-541076527456}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC46A61C-013C-449B-BAC4-541076527456}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DC46A61C-013C-449B-BAC4-541076527456}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DC46A61C-013C-449B-BAC4-541076527456}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4A5946C9-CB75-4E2F-ADD8-4BABF6AB1CAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4A5946C9-CB75-4E2F-ADD8-4BABF6AB1CAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A5946C9-CB75-4E2F-ADD8-4BABF6AB1CAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A5946C9-CB75-4E2F-ADD8-4BABF6AB1CAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC46A61C-013C-449B-BAC4-541076527456}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC46A61C-013C-449B-BAC4-541076527456}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC46A61C-013C-449B-BAC4-541076527456}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC46A61C-013C-449B-BAC4-541076527456}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -73,13 +73,13 @@
     <Compile Include="TransactionTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Trsanction.Core\Trsanction.Core.csproj">
-      <Project>{dc46a61c-013c-449b-bac4-541076527456}</Project>
-      <Name>Trsanction.Core</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\DeepTransaction\DeepTransaction.csproj">
+      <Project>{dc46a61c-013c-449b-bac4-541076527456}</Project>
+      <Name>DeepTransaction</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
