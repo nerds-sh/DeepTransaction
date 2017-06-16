@@ -9,34 +9,44 @@ namespace DeepTransaction
         private string _name;
         private readonly Queue<ITransactionStep> _steps;
         private readonly IDependencyResolver _dependencyResolver;
-        private static Queue<int> _transactionDeepneess;
+        private static Queue<int> _transactionDeepness;
         private TransactionScope _tranScope;
 
         public static TransactionWorker Define(string name)
         {
-            _transactionDeepneess = new Queue<int>();
+            _transactionDeepness = new Queue<int>();
             return new TransactionWorker(name);
         }
 
-        public TransactionWorker(string name)
+        private TransactionWorker(string name)
         {
             _steps = new Queue<ITransactionStep>();
-            _dependencyResolver = SetupResolver.Get();
+            _dependencyResolver = DeepBootstrapper.Get();
             this._name = name;
         }
 
-        public TransactionWorker AddStep<T>() where T : ITransactionStep
+        /// <summary>
+        /// This method is using for chaning steps for the current transaction
+        /// </summary>
+        /// <typeparam name="TStep">The type of the step</typeparam>
+        /// <returns>A base transaction used for chainging</returns>
+        public TransactionWorker AddStep<TStep>() where TStep : ITransactionStep
         {
-            var step = _dependencyResolver.Get<T>();
+            var step = _dependencyResolver.Resolve<TStep>();
             this._steps.Enqueue(step);
 
             return this;
         }
 
+        /// <summary>
+        /// This method is for passing the context and execute the current transaction
+        /// </summary>
+        /// <param name="input">Input Context which has to have the type Transaction Context</param>
+        /// <returns></returns>
         public TransactionContext Process(TransactionContext input)
         {
-            _transactionDeepneess.Enqueue(1);
-            if (_transactionDeepneess.Count <= 1)
+            _transactionDeepness.Enqueue(1);
+            if (_transactionDeepness.Count <= 1)
             {
                 _tranScope = new TransactionScope();
             }
@@ -49,14 +59,14 @@ namespace DeepTransaction
                 previousOutput = step.Execute(input);
             }
 
-            if (_transactionDeepneess.Count <= 1)
+            if (_transactionDeepness.Count <= 1)
             {
                 _tranScope.Complete();
                 _tranScope.Dispose();
                 _tranScope = null;
             }
 
-            _transactionDeepneess.Dequeue();
+            _transactionDeepness.Dequeue();
 
             return previousOutput;
         }

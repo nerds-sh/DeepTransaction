@@ -2,21 +2,35 @@
 {
     public abstract class BaseTransaction : ITransactionStep
     {
-        protected TransactionWorker Tran { get; set; }
+        private readonly TransactionWorker _tran;
 
+        /// <summary>
+        /// Defines the transaction name
+        /// </summary>
+        /// <param name="name">Transaction Name</param>
         protected BaseTransaction(string name)
         {
-            this.Tran = TransactionWorker.Define(name);
+            this._tran = TransactionWorker.Define(name);
         }
 
+        /// <summary>
+        /// This method is for passing the context and execute the current transaction
+        /// </summary>
+        /// <param name="input">Input Context which has to have the type Transaction Context</param>
+        /// <returns></returns>
         public TransactionContext Process(dynamic input)
         {
-            return this.Tran.Process(input);
+            return _tran.Process(input);
         }
 
+        /// <summary>
+        /// This method is using for chaning steps for the current transaction
+        /// </summary>
+        /// <typeparam name="TStep">The type of the step</typeparam>
+        /// <returns>A base transaction used for chainging</returns>
         public BaseTransaction AddStep<TStep>() where TStep : ITransactionStep
         {
-            this.Tran.AddStep<TStep>();
+            this._tran.AddStep<TStep>();
 
             return this;
         }
@@ -25,6 +39,7 @@
         {
             // do nothing
         }
+
 
         public virtual TransactionContext Execute(dynamic input)
         {

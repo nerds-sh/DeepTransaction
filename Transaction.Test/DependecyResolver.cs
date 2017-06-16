@@ -4,7 +4,7 @@ namespace Transaction.Test
 {
     public class DependecyResolver : IDependencyResolver
     {
-        public TOut Get<TOut>()
+        public TOut Resolve<TOut>()
         {
             return Container.Instance.Resolve<TOut>();
         }

@@ -8,7 +8,7 @@ namespace Transaction.Test
     {
         public TransactionTest()
         {
-            SetupResolver.Setup(new DependecyResolver());
+            DeepBootstrapper.MapResolver(new DependecyResolver());
         }
 
         [Fact]

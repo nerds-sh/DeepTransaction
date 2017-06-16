@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseTransaction.cs" />
-    <Compile Include="DI\SetupResolver.cs" />
+    <Compile Include="DI\DeepBootstrapper.cs" />
     <Compile Include="DI\IDependencyResolver.cs" />
     <Compile Include="ITransaction.cs" />
     <Compile Include="ITransactionStep.cs" />

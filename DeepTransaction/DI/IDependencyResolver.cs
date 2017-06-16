@@ -2,6 +2,6 @@
 {
     public interface IDependencyResolver
     {
-        TOut Get<TOut>();
+        TOut Resolve<TOut>();
     }
 }
