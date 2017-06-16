@@ -60,7 +60,7 @@ The AddPersonStep step can look like this:
                 
                     public class RegisterIoc : IDependencyResolver
                     {
-                        public TOut Get<TOut>()
+                        public TOut Resolve<TOut>()
                         {
                             return Container.Instance.Resolve<TOut>();
                         }
@@ -68,7 +68,7 @@ The AddPersonStep step can look like this:
        - We need to implement Get method with your dependency injection module. In this case the DI module is Unity
        - As a next step we need to register the newly created class to the framework (This would be a good idea to put it into the bootstrap class from your application)
                     
-                   SetupResolver.Setup(new RegisterIoc());
+                   DeepBootstrapper.MapResolver(new RegisterIoc());
                    
    ### Advanced scenarios:
    

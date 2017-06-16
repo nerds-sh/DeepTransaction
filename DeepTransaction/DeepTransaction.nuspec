@@ -7,8 +7,21 @@
     <authors>$author$</authors>
     <owners>$author$</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
-    <releaseNotes>Added library</releaseNotes>
+	<projectUrl>https://github.com/nerdscomputing/deeptransaction</projectUrl>
+    <description>
+				Create Transactional use cases.
+				For documentation please access: https://github.com/nerdscomputing/deeptransaction
+	</description>
+	<summary>
+			 Create Transactional use cases.
+			 For documentation please access: https://github.com/nerdscomputing/deeptransaction
+	</summary>
+    <releaseNotes>
+				 (* Breaking change) Rename  DeepBootstrapper.Get into Resolve
+			     (* Breaking change) Rename SetupResolver into DeepBootstrapper
+				 Added Before method for each step
+				 Added library
+    </releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>C# Transactions Usecase</tags>
   </metadata>
