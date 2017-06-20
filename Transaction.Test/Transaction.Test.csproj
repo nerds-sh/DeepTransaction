@@ -81,5 +81,9 @@
       <Name>DeepTransaction</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tests\Integration\Listeners\" />
+    <Folder Include="Tests\Unit\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

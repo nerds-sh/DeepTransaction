@@ -1,16 +1,19 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Transactions;
 using DeepTransaction.DI;
+using DeepTransaction.Listeners;
 
 namespace DeepTransaction
 {
     public class TransactionWorker
     {
-        private string _name;
+        private readonly string _name;
         private readonly Queue<ITransactionStep> _steps;
         private readonly IDependencyResolver _dependencyResolver;
         private static Queue<int> _transactionDeepness;
         private TransactionScope _tranScope;
+        private IListener _listener;
 
         public static TransactionWorker Define(string name)
         {
@@ -46,29 +49,64 @@ namespace DeepTransaction
         public TransactionContext Process(TransactionContext input)
         {
             _transactionDeepness.Enqueue(1);
-            if (_transactionDeepness.Count <= 1)
-            {
-                _tranScope = new TransactionScope();
-            }
-
+            BeginTransaction();
+            var stepName = string.Empty;
             dynamic previousOutput = null;
             while (_steps.Count > 0)
             {
-                var step = _steps.Dequeue();
-                step.Before(input);
-                previousOutput = step.Execute(input);
+                try
+                {
+                    var step = _steps.Dequeue();
+                    stepName = step.GetType().FullName;
+                    Trace.WriteLine(stepName);
+
+                    _listener?.Before(new ListenerModel() { Context = input, StepName = stepName, TransactionName = _name });
+
+                    step.Before(input);
+                    previousOutput = step.Execute(input);
+
+                    _listener?.After(new ListenerModel() { Context = input, StepName = stepName, TransactionName = _name });
+                }
+                catch (System.Exception e)
+                {
+                    _listener?.OnError(new ListenerModel() { Context = input, StepName = stepName, TransactionName = _name }, e);
+                    throw;
+                }
             }
 
-            if (_transactionDeepness.Count <= 1)
+            CommitTransaction();
+            _transactionDeepness.Dequeue();
+
+            return previousOutput;
+        }
+
+        private void CommitTransaction()
+        {
+            if (_transactionDeepness.Count > 1) return;
+            try
             {
                 _tranScope.Complete();
                 _tranScope.Dispose();
                 _tranScope = null;
             }
+            catch (System.Exception e)
+            {
 
-            _transactionDeepness.Dequeue();
+                throw;
+            }
+        }
 
-            return previousOutput;
+        private void BeginTransaction()
+        {
+            if (_transactionDeepness.Count <= 1)
+            {
+                _tranScope = new TransactionScope();
+            }
+        }
+
+        public void WithListener(IListener listener)
+        {
+            this._listener = listener;
         }
 
     }

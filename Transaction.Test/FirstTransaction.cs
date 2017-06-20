@@ -1,8 +1,4 @@
-﻿
-
-
-
-using DeepTransaction;
+﻿using DeepTransaction;
 
 namespace Transaction.Test
 {
