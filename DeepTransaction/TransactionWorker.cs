@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
-using System.Transactions;
 using DeepTransaction.DI;
 using DeepTransaction.Listeners;
 
@@ -11,13 +9,11 @@ namespace DeepTransaction
         private readonly string _name;
         private readonly Queue<ITransactionStep> _steps;
         private readonly IDependencyResolver _dependencyResolver;
-        private static Queue<int> _transactionDeepness;
-        private TransactionScope _tranScope;
         private IListener _listener;
 
         public static TransactionWorker Define(string name)
         {
-            _transactionDeepness = new Queue<int>();
+           
             return new TransactionWorker(name);
         }
 
@@ -48,8 +44,6 @@ namespace DeepTransaction
         /// <returns></returns>
         public TransactionContext Process(TransactionContext input)
         {
-            _transactionDeepness.Enqueue(1);
-            BeginTransaction();
             var stepName = string.Empty;
             dynamic previousOutput = null;
             while (_steps.Count > 0)
@@ -58,7 +52,6 @@ namespace DeepTransaction
                 {
                     var step = _steps.Dequeue();
                     stepName = step.GetType().FullName;
-                    Trace.WriteLine(stepName);
 
                     _listener?.Before(new ListenerModel() { Context = input, StepName = stepName, TransactionName = _name });
 
@@ -74,34 +67,7 @@ namespace DeepTransaction
                 }
             }
 
-            CommitTransaction();
-            _transactionDeepness.Dequeue();
-
             return previousOutput;
-        }
-
-        private void CommitTransaction()
-        {
-            if (_transactionDeepness.Count > 1) return;
-            try
-            {
-                _tranScope.Complete();
-                _tranScope.Dispose();
-                _tranScope = null;
-            }
-            catch (System.Exception e)
-            {
-
-                throw;
-            }
-        }
-
-        private void BeginTransaction()
-        {
-            if (_transactionDeepness.Count <= 1)
-            {
-                _tranScope = new TransactionScope();
-            }
         }
 
         public void WithListener(IListener listener)
