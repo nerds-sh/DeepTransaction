@@ -17,6 +17,8 @@
 			 For documentation please access: https://github.com/nerdscomputing/deeptransaction
 	</summary>
     <releaseNotes>
+			     Remove transactional behaviour
+				 Add listeners
 				 (* Breaking change) Rename  DeepBootstrapper.Get into Resolve
 			     (* Breaking change) Rename SetupResolver into DeepBootstrapper
 				 Added Before method for each step
