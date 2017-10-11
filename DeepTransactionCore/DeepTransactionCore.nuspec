@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Beu Alexandru</authors>
+    <owners>$author$</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<projectUrl>https://github.com/nerdscomputing/deeptransaction</projectUrl>
+    <description>
+				Create Transactional use cases.
+				For documentation please access: https://github.com/nerdscomputing/deeptransaction
+	</description>
+	<summary>
+			 Create Transactional use cases.
+			 For documentation please access: https://github.com/nerdscomputing/deeptransaction
+	</summary>
+    <releaseNotes>
+			     Remove transactional behaviour
+				 Add listeners
+				 (* Breaking change) Rename  DeepBootstrapper.Get into Resolve
+			     (* Breaking change) Rename SetupResolver into DeepBootstrapper
+				 Added Before method for each step
+				 Added library
+    </releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>C# Transactions Usecase</tags>
+  </metadata>
+</package>
