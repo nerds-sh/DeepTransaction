@@ -1,8 +1,9 @@
 ﻿using DeepTransaction;
 using DeepTransaction.DI;
+using Transaction.Test.DataProviders;
 using Xunit;
 
-namespace Transaction.Test
+namespace Transaction.Test.Tests
 {
     public class MultipleTransactionTests
     {

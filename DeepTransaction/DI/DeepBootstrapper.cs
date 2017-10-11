@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
+using DeepTransaction.Listeners;
 
 namespace DeepTransaction.DI
 {
     public static class DeepBootstrapper
     {
         private static IDependencyResolver _dependencyResolver;
+        private static IListener _listener;
 
         /// <summary>
         /// This method will register your dependecy resolver in order to take advantage of IOC
@@ -15,6 +18,11 @@ namespace DeepTransaction.DI
             _dependencyResolver = dependencyResolver;
         }
 
+        public static void MapListener(IListener listener)
+        {
+            _listener = listener;
+        }
+
         internal static IDependencyResolver Get()
         {
             if (_dependencyResolver == null)
@@ -23,6 +31,11 @@ namespace DeepTransaction.DI
             }
 
             return _dependencyResolver;
+        }
+
+        internal static IListener GetListener()
+        {
+            return _listener;
         }
     }
 }

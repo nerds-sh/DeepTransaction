@@ -1,6 +1,7 @@
 ﻿using DeepTransaction;
+using Transaction.Test.Tests;
 
-namespace Transaction.Test
+namespace Transaction.Test.DataProviders
 {
     public class SecondTransaction : BaseTransaction
     {

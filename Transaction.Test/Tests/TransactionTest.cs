@@ -2,7 +2,7 @@
 using DeepTransaction.DI;
 using Xunit;
 
-namespace Transaction.Test
+namespace Transaction.Test.Tests
 {
     public class TransactionTest
     {
