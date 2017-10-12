@@ -1,6 +1,7 @@
 ﻿using DeepTransaction;
+using Transaction.Test.Exceptions;
 
-namespace Transaction.Test
+namespace Transaction.Test.DataProviders
 {
   
     public class FirstTransaction : BaseTransaction
@@ -8,6 +9,32 @@ namespace Transaction.Test
         public FirstTransaction() : base("My Transaction")
         {
             this.AddStep<Step3>().AddStep<Step4>();
+        }
+    }
+
+    public class DummyStep : ITransactionStep
+    {
+        public void Before(dynamic input)
+        {
+            
+        }
+
+        public TransactionContext Execute(dynamic input)
+        {
+            return input;
+        }
+    }
+
+    public class ThrowExceptionStep : ITransactionStep
+    {
+        public void Before(dynamic input)
+        {
+            
+        }
+
+        public TransactionContext Execute(dynamic input)
+        {
+            throw new CustomException("Some nasty exception");
         }
     }
 

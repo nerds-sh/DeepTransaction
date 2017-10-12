@@ -13,7 +13,6 @@ namespace DeepTransaction
 
         public static TransactionWorker Define(string name)
         {
-           
             return new TransactionWorker(name);
         }
 
@@ -21,6 +20,7 @@ namespace DeepTransaction
         {
             _steps = new Queue<ITransactionStep>();
             _dependencyResolver = DeepBootstrapper.Get();
+            _listener = DeepBootstrapper.GetListener();
             this._name = name;
         }
 
@@ -70,10 +70,15 @@ namespace DeepTransaction
             return previousOutput;
         }
 
-        public void WithListener(IListener listener)
+        /// <summary>
+        /// Register listener to a specific transaction. If a global listener was already registered this method will overided it for this specific transaction
+        /// </summary>
+        /// <param name="listener">IListener instance implementation</param>
+        /// <returns></returns>
+        public TransactionWorker WithListener(IListener listener)
         {
             this._listener = listener;
+            return this;
         }
-
     }
 }
