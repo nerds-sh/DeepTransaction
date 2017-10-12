@@ -78,6 +78,7 @@
     <Compile Include="Container.cs" />
     <Compile Include="DependecyResolver.cs" />
     <Compile Include="Exceptions\CustomException.cs" />
+    <Compile Include="Tests\LocalListenerTest.cs" />
     <Compile Include="Tests\MultipleTransactionTests.cs" />
     <Compile Include="DataProviders\FirstTransaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

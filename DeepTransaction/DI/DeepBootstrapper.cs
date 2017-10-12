@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using DeepTransaction.Listeners;
 
 namespace DeepTransaction.DI
@@ -18,6 +17,10 @@ namespace DeepTransaction.DI
             _dependencyResolver = dependencyResolver;
         }
 
+        /// <summary>
+        /// Register a global listener for every transaction that is executed.
+        /// </summary>
+        /// <param name="listener">IListener instance implementation</param>
         public static void MapListener(IListener listener)
         {
             _listener = listener;
