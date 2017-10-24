@@ -2,7 +2,7 @@
 {
     public abstract class BaseTransaction : ITransactionStep
     {
-        private readonly TransactionWorker _tran;
+        private readonly TransactionEngine _tran;
 
         /// <summary>
         /// Defines the transaction name
@@ -10,7 +10,7 @@
         /// <param name="name">Transaction Name</param>
         protected BaseTransaction(string name)
         {
-            this._tran = TransactionWorker.Define(name);
+            this._tran = new TransactionEngine(name);
         }
 
         /// <summary>

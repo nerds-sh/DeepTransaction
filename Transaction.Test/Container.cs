@@ -8,23 +8,11 @@ namespace Transaction.Test
     {
         #region Private Fields
 
-        /// <summary>
-        /// The instance of the IoC Container.
-        /// </summary>
-        private static readonly Container instance = new Container();
-        private readonly IUnityContainer iocContainer = new UnityContainer();
-
         #endregion
 
         #region Constructor
 
-        public IUnityContainer IocContainer
-        {
-            get
-            {
-                return iocContainer;
-            }
-        }
+        public IUnityContainer IocContainer { get; } = new UnityContainer();
 
         /// <summary>
         /// Prevents the creation of an instance of the Container type.
@@ -38,8 +26,7 @@ namespace Transaction.Test
         /// </summary>
         static Container()
         {
-            Instance.iocContainer.RegisterInstance(Instance, new ContainerControlledLifetimeManager());
-
+            Instance.IocContainer.RegisterInstance(Instance, new ContainerControlledLifetimeManager());
         }
 
         #endregion
@@ -49,13 +36,7 @@ namespace Transaction.Test
         /// <summary>
         /// Gets the singleton instance of the Container class.
         /// </summary>
-        public static Container Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
+        public static Container Instance { get; } = new Container();
 
         #endregion
 
@@ -68,7 +49,7 @@ namespace Transaction.Test
         /// <typeparam name="TImplementation">The implementation type.</typeparam>
         public void Register<TBase, TImplementation>() where TImplementation : TBase
         {
-            this.iocContainer.RegisterType(typeof(TBase), typeof(TImplementation), new TransientLifetimeManager());
+            this.IocContainer.RegisterType(typeof(TBase), typeof(TImplementation), new TransientLifetimeManager());
         }
 
         /// <summary>
@@ -79,7 +60,7 @@ namespace Transaction.Test
         /// <param name="value">The singleton value.</param>
         public void Register<TBase, TImplementation>(TImplementation value) where TImplementation : TBase
         {
-            this.iocContainer.RegisterInstance(typeof(TBase), value, new ContainerControlledLifetimeManager());
+            this.IocContainer.RegisterInstance(typeof(TBase), value, new ContainerControlledLifetimeManager());
         }
 
         /// <summary>
@@ -89,7 +70,7 @@ namespace Transaction.Test
         /// <returns>The resolved value.</returns>
         public T Resolve<T>()
         {
-            return (T)this.iocContainer.Resolve(typeof(T));
+            return (T)this.IocContainer.Resolve(typeof(T));
         }
 
         /// <summary>
@@ -106,7 +87,7 @@ namespace Transaction.Test
                 parameterOverrides.Add(parameter.Key, parameter.Value);
             }
 
-            return (T)this.iocContainer.Resolve(typeof(T), parameterOverrides.OnType<T>());
+            return (T)this.IocContainer.Resolve(typeof(T), parameterOverrides.OnType<T>());
         }
 
         /// <summary>
@@ -116,7 +97,7 @@ namespace Transaction.Test
         /// <typeparam name="TBase"></typeparam>
         public void RegisterInConstructor<TUsage, TBase>()
         {
-            this.iocContainer.RegisterType<TUsage>(new InjectionConstructor(Instance.Resolve<TBase>()));
+            this.IocContainer.RegisterType<TUsage>(new InjectionConstructor(Instance.Resolve<TBase>()));
         }
 
         /// <summary>
@@ -126,7 +107,7 @@ namespace Transaction.Test
         /// <param name="implementation">Open Generic Implementation</param>
         public void Register(Type basic, Type implementation)
         {
-            this.iocContainer.RegisterType(basic, implementation, new TransientLifetimeManager());
+            this.IocContainer.RegisterType(basic, implementation, new TransientLifetimeManager());
         }
 
         #endregion
