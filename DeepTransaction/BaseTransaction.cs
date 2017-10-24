@@ -2,7 +2,7 @@
 {
     public abstract class BaseTransaction : ITransactionStep
     {
-        private readonly TransactionEngine _tran;
+        protected TransactionEngine _tran;
 
         /// <summary>
         /// Defines the transaction name

@@ -6,21 +6,21 @@ namespace Transaction.Test.DataProviders
 {
     public class MyContext : IDisposable
     {
-        public void Dispose()
+        public virtual void Dispose()
         {
         }
 
-        public void BeginTran()
-        {
-            
-        }
-
-        public void Rollback()
+        public virtual void BeginTran()
         {
             
         }
 
-        public void Commit()
+        public virtual void Rollback()
+        {
+            
+        }
+
+        public virtual void Commit()
         {
             
         }

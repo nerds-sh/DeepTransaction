@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseContextualTransaction.cs" />
     <Compile Include="BaseTransaction.cs" />
     <Compile Include="ContextualTransaction.cs" />
     <Compile Include="DI\DeepBootstrapper.cs" />
