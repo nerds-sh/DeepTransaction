@@ -11,7 +11,7 @@ namespace DeepTransaction
 
         public static ContextualTransaction<TContext> Define<TContext>(string name, TContext context) where TContext : class, IDisposable
         {
-            return new ContextualTransaction<TContext>(name, context);
+            return new ContextualTransaction<TContext>(name, context, true);
         }
     }
 }

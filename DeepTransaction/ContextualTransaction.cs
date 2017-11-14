@@ -7,12 +7,19 @@ namespace DeepTransaction
     public class ContextualTransaction<TContext> : TransactionEngine where TContext : class, IDisposable
     {
         private readonly TContext _context;
+        private readonly bool _isParent;
         private readonly ITransactionScope<TContext> _transactionScope;
 
-        internal ContextualTransaction(string name, TContext context) : base(name)
+        internal ContextualTransaction(string name, TContext context, bool isParent = false) : base(name)
         {
             _context = context;
+            _isParent = isParent;
             _transactionScope = (ITransactionScope<TContext>)DeepBootstrapper.GetContext();
+        }
+
+        private void ExecuteIfParent(Action action)
+        {
+            if (_isParent) action();
         }
 
         public override TransactionContext Process(TransactionContext input)
@@ -25,7 +32,8 @@ namespace DeepTransaction
                 }
             }
 
-            _transactionScope.BeginTran(_context);
+            ExecuteIfParent(() => _transactionScope.BeginTran(_context));
+           
             TransactionContext outputContext;
 
             try
@@ -33,7 +41,7 @@ namespace DeepTransaction
                 using (_context)
                 {
                     outputContext = base.Process(input);
-                    _transactionScope.Commit(_context);
+                    ExecuteIfParent(() => _transactionScope.Commit(_context));
                 }
             }
             catch (Exception)
