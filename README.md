@@ -2,8 +2,8 @@
 # DeepTransaction
 Write better code with the help of steps which are wrapped in a transaction.
 Available on Nuget here :
-.Net Core - https://www.nuget.org/packages/DeepTransactionCore/
-.Net - https://www.nuget.org/packages/DeepTransaction/
+    #.Net Core - https://www.nuget.org/packages/DeepTransactionCore/
+    #.Net - https://www.nuget.org/packages/DeepTransaction/
 ### Simple Example of usage:
 
    ```
