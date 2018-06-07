@@ -1,8 +1,9 @@
-#THE TRANSACTIONAL BEHAVIOUR IS NOT SUPPORTED FOR VERSION 1.0.0.3 !!!!! We have a deadlock problem we need to fix in 1.0.0.4 ....
 
 # DeepTransaction
 Write better code with the help of steps which are wrapped in a transaction.
-
+Available on Nuget here :
+.Net Core - https://www.nuget.org/packages/DeepTransactionCore/
+.Net - https://www.nuget.org/packages/DeepTransaction/
 ### Simple Example of usage:
 
    ```
