@@ -7,7 +7,8 @@ namespace DeepTransaction.DI
     {
         private static IDependencyResolver _dependencyResolver;
         private static IListener _listener;
-
+        private static object _context;
+        
         /// <summary>
         /// This method will register your dependecy resolver in order to take advantage of IOC
         /// </summary>
@@ -26,6 +27,11 @@ namespace DeepTransaction.DI
             _listener = listener;
         }
 
+        public static void MapContext(object context)
+        {
+            _context = context;
+        }
+
         internal static IDependencyResolver Get()
         {
             if (_dependencyResolver == null)
@@ -39,6 +45,11 @@ namespace DeepTransaction.DI
         internal static IListener GetListener()
         {
             return _listener;
+        }
+
+        internal static object GetContext()
+        {
+            return _context;
         }
     }
 }
